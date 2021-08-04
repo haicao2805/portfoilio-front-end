@@ -42,9 +42,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = () => {
                 }   bg-cod-gray-500 h-full fixed top-0 left-0 w-full z-20 bg-opacity-70`}
             >
                 <ul
-                    className={`flex flex-col items-center justify-center h-full space-y-12 text-3xl transform opacity-0 ${
-                        isActive ? 'fade-in' : ''
-                    }`}
+                    className={`flex flex-col items-center justify-center h-full space-y-8 text-2xl transform opacity-0 ${isActive ? 'fade-in' : ''}`}
                 >
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">HOME</li>
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">PORTFOLIO</li>
