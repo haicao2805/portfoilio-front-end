@@ -3,10 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*:focus {
-    outline: 0 !important;
-}
-@keyframes FadeIn {
+@keyframes fadeIn {
     0% {
         opacity: 0;
     }
@@ -15,119 +12,47 @@
     }
 }
 
-@keyframes fadeLeft {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes renderWave {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(110%);
-    }
-}
-@keyframes loaderWave {
-    0% {
-        transform: translateX(-50%) scaleX(0.2);
-    }
-
-    100% {
-        transform: translateX(110%) scaleX(0.8);
-    }
-}
-@keyframes cardWave {
-    0% {
-        transform: translate(10%, 10%) scale(0.8);
-    }
-
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-}
-
 .fade-in {
-    animation: 1s forwards FadeIn;
+    animation: fadeIn 1s 0.3s forwards;
 }
 
-.render-wave {
-    transform-origin: left;
-    animation: 1.2s forwards renderWave;
+.menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
 }
-
-.fade-left {
-    animation: 1.2s forwards fadeLeft;
+.line {
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.card-wave {
-    animation: 1.2s forwards cardWave;
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
 }
-
-.loader-wave {
-    transform-origin: left;
-    animation: 1.2s forwards loaderWave;
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
 }
-
-.banner-fade-in {
-    opacity: 0;
-    animation: FadeIn 2s 1s forwards;
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
 }
-
-.bg-moon {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    right: 0;
-    background-image: url('/asset/icons/moonlight.svg'), url('/asset/icons/star.svg');
-    background-repeat: no-repeat;
-    background-position: 100% 50%;
-    height: 100%;
-    width: 100%;
+.opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
 }
-
-.btn-scroll {
-    position: absolute;
-    bottom: 100px;
-    color: #fefefe;
-    left: 3rem;
-    writing-mode: vertical-rl;
-    font-weight: 600;
-    letter-spacing: 5px;
+.opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
 }
-
-.btn-scroll-2 {
-    position: absolute;
-    bottom: 100px;
-    color: #fefefe;
-    right: 3rem;
-    writing-mode: vertical-rl;
-    font-weight: 600;
-    letter-spacing: 5px;
-}
-
-.btn-scroll::after,
-.btn-scroll-2::after {
-    content: '';
-    top: 110%;
-    left: 40%;
-    position: absolute;
-    display: block;
-    height: 85px;
-    width: 2px;
-    background-color: #fefefe;
-}
-.tooltip:hover .content {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-}
-
-.flex-0 {
-    flex: 0;
+.opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
 }
