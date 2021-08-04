@@ -10,13 +10,13 @@ export interface NavbarProps {}
 const Navbar: React.FunctionComponent<NavbarProps> = () => {
     const [isActive, setActive] = React.useState(false);
     return (
-        <div className="fixed z-50 w-full p-4 text-white md:p-8 ">
-            <div className="relative z-30 flex items-center justify-between">
+        <div className="fixed z-50 items-center justify-between w-full p-4 text-white md:p-8 md:flex ">
+            <div className="relative z-30 flex items-center justify-between md:flex-1">
                 <div className="font-serif text-2xl italic font-medium">
                     <Link href="/">Hai Cao</Link>
                 </div>
                 <button
-                    className="menu focus:outline-none"
+                    className="menu focus:outline-none md:hidden"
                     onClick={(click) => {
                         setActive(!isActive);
                         click.currentTarget.classList.toggle('opened');
@@ -37,12 +37,14 @@ const Navbar: React.FunctionComponent<NavbarProps> = () => {
                 </button>
             </div>
             <div
-                className={`duration-300 origin-top transform  ${
-                    isActive ? 'scale-y-100' : 'scale-y-0'
-                }   bg-cod-gray-500 h-full fixed top-0 left-0 w-full z-20 bg-opacity-70`}
+                className={`duration-300 origin-top transform  md:flex-1 ${
+                    isActive ? 'scale-y-100' : 'scale-y-0 md:scale-100'
+                }   bg-cod-gray-500 md:bg-opacity-0 h-full fixed md:static top-0 left-0 w-full z-20  `}
             >
                 <ul
-                    className={`flex flex-col items-center justify-center h-full space-y-8 text-2xl transform opacity-0 ${isActive ? 'fade-in' : ''}`}
+                    className={`flex flex-col md:flex-row items-center justify-center h-full md:justify-end space-y-8 md:space-y-0 md:space-x-10 text-2xl md:text-lg transform md:opacity-100 opacity-0 ${
+                        isActive ? 'fade-in' : ''
+                    }`}
                 >
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">HOME</li>
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">PORTFOLIO</li>
@@ -50,7 +52,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = () => {
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">ABOUT</li>
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">CONTACT</li>
                     <li>
-                        <div className="flex space-x-4">
+                        <div className="flex space-x-4 md:hidden">
                             <a
                                 href="https://www.linkedin.com/in/cao-ch%C3%AD-h%E1%BA%A3i-127033219/?fbclid=IwAR2MRUuXuliROnVhJW_yaXSGkFe7nEvv9hDSHfK8OfnQrmlgPj_odj5saJc"
                                 target="__blank"
