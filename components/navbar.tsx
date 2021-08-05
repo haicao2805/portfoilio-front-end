@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import Link from 'next/link';
 import InLogo from '../public/asset/icons/in';
 import GmailLogo from '../public/asset/icons/gmail';
@@ -9,20 +10,22 @@ export interface NavbarProps {}
 
 const Navbar: React.FunctionComponent<NavbarProps> = () => {
     const [isActive, setActive] = React.useState(false);
+    const burgerButton = React.useRef<HTMLButtonElement>(null);
+
+    const handleOnClick = () => {
+        setActive(!isActive);
+        if (burgerButton.current) {
+            burgerButton.current.classList.toggle('opened');
+        }
+    };
+
     return (
-        <div className="fixed z-50 items-center justify-between w-full p-4 text-white md:p-8 md:flex ">
+        <div className="z-50 items-center justify-between w-full p-4 text-white md:p-8 md:flex">
             <div className="relative z-30 flex items-center justify-between md:flex-1">
                 <div className="font-serif text-2xl italic font-medium">
                     <Link href="/">Hai Cao</Link>
                 </div>
-                <button
-                    className="menu focus:outline-none md:hidden"
-                    onClick={(click) => {
-                        setActive(!isActive);
-                        click.currentTarget.classList.toggle('opened');
-                    }}
-                    aria-label="Main Menu"
-                >
+                <button className="menu focus:outline-none md:hidden" onClick={handleOnClick} aria-label="Main Menu" ref={burgerButton}>
                     <svg width="48" height="48" viewBox="0 0 100 100">
                         <path
                             className="line line1"
@@ -46,11 +49,31 @@ const Navbar: React.FunctionComponent<NavbarProps> = () => {
                         isActive ? 'fade-in' : ''
                     }`}
                 >
-                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">HOME</li>
-                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">PORTFOLIO</li>
-                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">BLOG</li>
-                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">ABOUT</li>
-                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">CONTACT</li>
+                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                        <button onClick={handleOnClick}>
+                            <a href="https://github.com/haicao2805" target="__blank">
+                                REPOSITORY
+                            </a>
+                        </button>
+                    </li>
+                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                        <button onClick={handleOnClick}>
+                            <Link href="/project">PROJECT</Link>
+                        </button>
+                    </li>
+                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                        <button onClick={handleOnClick}>BLOG</button>
+                    </li>
+                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                        <button onClick={handleOnClick}>
+                            <Link href="/about">ABOUT</Link>
+                        </button>
+                    </li>
+                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                        <button onClick={handleOnClick}>
+                            <Link href="/contact">CONTACT</Link>
+                        </button>
+                    </li>
                     <li>
                         <div className="flex space-x-4 md:hidden">
                             <a

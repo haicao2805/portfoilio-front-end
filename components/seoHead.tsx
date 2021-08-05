@@ -18,7 +18,7 @@ const SeoHead: React.FunctionComponent<SeoHeadProps> = ({
     isFollowPage = true,
     description = '',
     canonical = '',
-    imageUrl = '/asset/images/seo.jpg',
+    imageUrl = '/asset/images/avatar.jpg',
 }) => {
     const metaIndexPage = isIndexPage ? 'index' : 'noindex';
     const metaIsFollowPage = isFollowPage ? 'follow' : 'nofollow';
@@ -36,8 +36,8 @@ const SeoHead: React.FunctionComponent<SeoHeadProps> = ({
             <title>{capitalize(pageTitle)}</title>
             <meta name="description" content={description} />
             <meta name="robots" content={metaRobots} />
-            <meta name="keywords" content="Pham Vinh Nhan, portfolio, personal project" />
-            <link href={'https://heaty566.com' + canonical} rel="canonical" />
+            <meta name="keywords" content="Cao Chi Hai, portfolio, personal project" />
+            <link href={'https://haicao.website' + canonical} rel="canonical" />
             {/* google header */}
             <meta property="og:type" content="article" />
             <meta property="og:title" content={pageTitle} />

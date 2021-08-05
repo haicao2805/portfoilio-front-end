@@ -12,6 +12,9 @@
     }
 }
 
+.fade-in-instantly {
+    animation: fadeIn 0.3s forwards;
+}
 .fade-in {
     animation: fadeIn 1s 0.3s forwards;
 }
@@ -55,4 +58,8 @@
     stroke-dasharray: 90 207;
     stroke-dashoffset: -134;
     stroke-width: 6;
+}
+
+.bg-transparent {
+    background-color: transparent;
 }
