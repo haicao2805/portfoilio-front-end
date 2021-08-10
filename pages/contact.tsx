@@ -4,9 +4,42 @@ import InLogo from '../public/asset/icons/in';
 import GmailLogo from '../public/asset/icons/gmail';
 import FacebookLogo from '../public/asset/icons/facebook';
 import GithubLogo from '../public/asset/icons/github';
+import { useForm } from 'react-hook-form';
+import { ApiState } from '../api/api.interface';
+import { RootState, store } from '../store';
+import { useSelector } from 'react-redux';
+import useFormError from '../common/hooks/useFormError';
+import commonThunk from '../store/api/thunk';
 export interface ContactProps {}
 
+interface ContactForm {
+    fullName: string;
+    email: string;
+    phone: string;
+    message: string;
+}
+
+const defaultValues: ContactForm = {
+    email: '',
+    message: '',
+    phone: '',
+    fullName: '',
+};
+
 const Contact: React.FunctionComponent<ContactProps> = () => {
+    const { register, handleSubmit, reset } = useForm<ContactForm>({ defaultValues });
+    const apiState = useSelector<RootState, ApiState>((state) => state.api);
+    const errors = useFormError<ContactForm>(defaultValues);
+    const handleOnSubmit = (data: ContactForm) => {
+        store.dispatch(commonThunk.sendSupport(data));
+    };
+
+    React.useEffect(() => {
+        if (apiState.message) {
+            reset(defaultValues);
+        }
+    }, [apiState.message]);
+
     return (
         <>
             <SeoHead title="Cao Chi Hai | Contact" canonical="/about" />
@@ -39,17 +72,20 @@ const Contact: React.FunctionComponent<ContactProps> = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="p-4 space-y-2 w-96">
+                    <form onSubmit={handleSubmit(handleOnSubmit)} className="p-4 space-y-2 w-96">
                         <h1 className="text-2xl font-semibold text-center">GET IN TOUCH</h1>
-                        {/* <div className="font-medium text-green-500">Thank............</div> */}
+
                         <div className="space-y-2">
                             <label className="block">
                                 Full Name
                                 <span className="font-bold text-red-500">*</span>
                             </label>
                             <div>
-                                <input className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none" />
-                                {/* <p className="font-medium text-red-500">Username is wrong</p> */}
+                                <input
+                                    {...register('fullName')}
+                                    className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none"
+                                />
+                                {Boolean(errors.fullName.length) && <p className="text-red-500 ">Full Name {errors.fullName}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -58,15 +94,21 @@ const Contact: React.FunctionComponent<ContactProps> = () => {
                                 <span className="font-bold text-red-500">*</span>
                             </label>
                             <div>
-                                <input className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none" />
-                                {/* <p className="font-medium text-red-500">Username is wrong</p> */}
+                                <input
+                                    {...register('email')}
+                                    className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none"
+                                />
+                                {Boolean(errors.email.length) && <p className="text-red-500 ">Email {errors.email}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
                             <label className="block">Phone Number</label>
                             <div>
-                                <input className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none" />
-                                {/* <p className="font-medium text-red-500">Username is wrong</p> */}
+                                <input
+                                    {...register('phone')}
+                                    className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none"
+                                />
+                                {Boolean(errors.phone.length) && <p className="text-red-500 ">Phone {errors.phone}</p>}
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -76,17 +118,18 @@ const Contact: React.FunctionComponent<ContactProps> = () => {
                             </label>
                             <div>
                                 <textarea
+                                    {...register('message')}
                                     className="w-full p-2 duration-300 bg-transparent border-2 border-black rounded-md focus:border-yellow-500 focus:outline-none"
                                     placeholder=" Message..."
                                 ></textarea>
 
-                                {/* <p className="font-medium text-red-500">Username is wrong</p> */}
+                                {Boolean(errors.message.length) && <p className="text-red-500 fade-in">Message {errors.message}</p>}
                             </div>
                         </div>
                         <div className="text-center">
                             <button className="inline-block px-4 py-2 mx-auto font-semibold text-black bg-yellow-500 rounded-md">Send Me</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </>
