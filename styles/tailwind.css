@@ -63,3 +63,8 @@
 .bg-transparent {
     background-color: transparent;
 }
+.tooltip:hover .content {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}

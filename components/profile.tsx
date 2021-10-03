@@ -20,8 +20,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                     <h1 className="font-semibold text-white md:text-8xl">Cao Chi Hai</h1>
                     <p className="text-lg font-medium text-yellow-400 opacity-90 md:text-4xl ">back-end developer</p>
                     <p className="px-4 text-white md:max-w-lg opacity-80 md:w-full md:text-lg md:px-0">
-                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                        Exercitation veniam consequat sunt nostrud amet.
+                    I am a junior backend developer with 2-years of learning and practicing ExpressJS and NestJS to build servers. Passionate about learning new knowledge, loving to solve the problem, and finding ways to work more effectively.
                     </p>
                 </div>
                 <div className="flex justify-center space-x-4 md:justify-start">

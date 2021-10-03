@@ -50,6 +50,9 @@ const Navbar: React.FunctionComponent<NavbarProps> = () => {
                     }`}
                 >
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                        <a href="/">HOME</a>
+                    </li>
+                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
                         <button onClick={handleOnClick}>
                             <a href="https://github.com/haicao2805" target="__blank">
                                 REPOSITORY
@@ -60,9 +63,6 @@ const Navbar: React.FunctionComponent<NavbarProps> = () => {
                         <button onClick={handleOnClick}>
                             <Link href="/project">PROJECT</Link>
                         </button>
-                    </li>
-                    <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
-                        <button onClick={handleOnClick}>BLOG</button>
                     </li>
                     <li className="duration-300 transform cursor-pointer hover:scale-110 hover:text-yellow-500">
                         <button onClick={handleOnClick}>
