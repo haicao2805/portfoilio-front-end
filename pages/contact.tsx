@@ -74,7 +74,7 @@ const Contact: React.FunctionComponent<ContactProps> = () => {
                     </div>
                     <form onSubmit={handleSubmit(handleOnSubmit)} className="p-4 space-y-2 w-96">
                         <h1 className="text-2xl font-semibold text-center">GET IN TOUCH</h1>
-
+                        {Boolean(apiState.message)  && <p className="text-green-500 font-semibold">{apiState.message}</p>}
                         <div className="space-y-2">
                             <label className="block">
                                 Full Name
