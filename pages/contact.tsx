@@ -102,7 +102,11 @@ const Contact: React.FunctionComponent<ContactProps> = () => {
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label className="block">Phone Number</label>
+                            <label className="block">
+                                Phone Number
+                                <span className="font-bold text-red-500">*</span>
+                            </label>
+
                             <div>
                                 <input
                                     {...register('phone')}
