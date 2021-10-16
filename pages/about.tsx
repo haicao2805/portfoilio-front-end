@@ -85,7 +85,7 @@ const About: React.FunctionComponent<AboutProps> = () => {
                             <div className="space-y-2">
                                 <p className="text-xl">Frameworks:</p>
                                 <div className="flex space-x-6">
-                                <TooltipDropBox content="NestJS" maxLength={0} position="bottom-full">
+                                    <TooltipDropBox content="NestJS" maxLength={0} position="bottom-full">
                                         <NestJsIcon />
                                     </TooltipDropBox>
                                     <TooltipDropBox content="ExpressJS" maxLength={0} position="bottom-full">
